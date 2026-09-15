@@ -1,0 +1,901 @@
+/* ==========================================================================
+   BOSS DA NANG - SERVICES PAGE CUSTOM STYLESHEET
+   ========================================================================== */
+
+.boss-services-page {
+  font-family: 'Be Vietnam Pro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1e293b;
+  background-color: #f8fafc;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+.relative-z {
+  position: relative;
+  z-index: 2;
+}
+
+/* Color Tokens */
+.text-white { color: #ffffff !important; }
+.text-yellow { color: #ffd600 !important; }
+.text-light-green { color: #cbd5e1 !important; }
+.dark-green-bg { background-color: #043c23 !important; }
+.section-space { padding: 4.5rem 0; }
+
+.gold-text-glow {
+  color: #ffd600;
+  text-shadow: 0 0 20px rgba(255, 214, 0, 0.3);
+}
+
+.live-dot, .live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ef4444;
+  display: inline-block;
+  animation: liveDotPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes liveDotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+/* Global Buttons */
+.btn-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-red-pulse {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+}
+
+.btn-red-pulse:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(239, 68, 68, 0.55);
+}
+
+.btn-gold-outline {
+  background: rgba(255, 214, 0, 0.15);
+  border: 1.5px solid #ffd600;
+  color: #ffd600;
+}
+
+.btn-gold-outline:hover {
+  background: #ffd600;
+  color: #043c23;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 214, 0, 0.3);
+}
+
+.btn-red-sm {
+  background: #ef4444;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.btn-red-sm:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+.btn-red-full {
+  width: 100%;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.35);
+}
+
+.btn-red-full:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   1. HERO HEADER SECTION
+   -------------------------------------------------------------------------- */
+.svc-hero-header {
+  position: relative;
+  background: linear-gradient(145deg, #022314 0%, #043c23 60%, #085231 100%);
+  padding: 5rem 0 4.5rem;
+  color: #ffffff;
+  border-bottom: 3px solid #ffd600;
+}
+
+.svc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(255, 214, 0, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.svc-hero-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.svc-live-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+}
+
+.svc-hero-heading {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1.25;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+@media (min-width: 992px) {
+  .svc-hero-heading {
+    font-size: 3.2rem;
+  }
+}
+
+.svc-hero-subheading {
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  line-height: 1.7;
+  margin: 0 auto 2.2rem;
+  max-width: 760px;
+}
+
+.svc-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.svc-hero-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 1.2rem 1.8rem;
+  text-align: left;
+}
+
+.hl-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hl-icon {
+  color: #ffd600;
+  flex-shrink: 0;
+}
+
+.hl-item strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.hl-item span {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+}
+
+/* --------------------------------------------------------------------------
+   2. STATS BANNER
+   -------------------------------------------------------------------------- */
+.svc-stats-bar-section {
+  margin-top: -30px;
+  position: relative;
+  z-index: 10;
+}
+
+.svc-stats-grid-card {
+  background: #ffffff;
+  border-radius: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  padding: 1.5rem 2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.svc-stat-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 1rem;
+}
+
+.stat-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon-wrap.gold { background: rgba(255, 214, 0, 0.2); color: #d97706; }
+.stat-icon-wrap.green { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.stat-icon-wrap.red { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+.stat-icon-wrap.blue { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+
+.svc-stat-box h3 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #043c23;
+  margin: 0 0 2px 0;
+}
+
+.svc-stat-box p {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. SECTION HEADERS
+   -------------------------------------------------------------------------- */
+.svc-section-header {
+  margin-bottom: 2.8rem;
+}
+
+.brand-sub-tag {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #043c23;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.brand-main-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+@media (min-width: 992px) {
+  .brand-main-title { font-size: 2.6rem; }
+}
+
+.brand-desc-text {
+  font-size: 1.02rem;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   4. CORE SERVICES CATALOG
+   -------------------------------------------------------------------------- */
+.svc-tabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2.8rem;
+}
+
+.svc-tab-item {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #334155;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.svc-tab-item:hover {
+  border-color: #043c23;
+  color: #043c23;
+  transform: translateY(-2px);
+}
+
+.svc-tab-item.active {
+  background: #043c23;
+  color: #ffd600;
+  border-color: #043c23;
+  box-shadow: 0 4px 18px rgba(4, 60, 35, 0.25);
+}
+
+.svc-cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .svc-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.svc-card-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.35s ease;
+}
+
+.svc-card-box:hover {
+  transform: translateY(-6px);
+  border-color: #043c23;
+  box-shadow: 0 15px 35px rgba(4, 60, 35, 0.15);
+}
+
+.svc-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.badge-gold { background: #ffd600; color: #043c23; }
+.badge-red { background: #ef4444; color: #ffffff; }
+.badge-emerald { background: #10b981; color: #ffffff; }
+.badge-blue { background: #3b82f6; color: #ffffff; }
+.badge-purple { background: #a855f7; color: #ffffff; }
+
+.svc-card-thumb-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.svc-card-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.svc-card-box:hover .svc-card-thumb-wrap img {
+  transform: scale(1.06);
+}
+
+.thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 60%);
+}
+
+.svc-card-content {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.svc-card-heading {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #043c23;
+  margin: 0 0 4px 0;
+  line-height: 1.35;
+}
+
+.svc-card-subheading {
+  font-size: 0.88rem;
+  color: #d97706;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.svc-card-description {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.svc-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.svc-bullet-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.bullet-check-icon {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.svc-card-bottom-bar {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.price-label-small {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.price-val-highlight {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #ef4444;
+}
+
+/* --------------------------------------------------------------------------
+   5. DISTRICT SPEED NETWORK
+   -------------------------------------------------------------------------- */
+.district-tabs-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2.2rem;
+}
+
+.district-pill-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.district-pill-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffd600;
+}
+
+.district-pill-btn.active {
+  background: #ffd600;
+  color: #043c23;
+  border-color: #ffd600;
+  box-shadow: 0 4px 18px rgba(255, 214, 0, 0.35);
+}
+
+.district-details-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1.5px solid rgba(255, 214, 0, 0.35);
+  border-radius: 24px;
+  padding: 2.2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 992px) {
+  .district-details-card {
+    grid-template-columns: 1.4fr 0.8fr;
+  }
+}
+
+.district-time-tag {
+  display: inline-block;
+  background: #ffd600;
+  color: #043c23;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.district-details-left h3 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+}
+
+.district-address-text {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  margin-bottom: 1.5rem;
+}
+
+.district-streets-group span {
+  display: block;
+  font-size: 0.85rem;
+  color: #ffd600;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.street-tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.street-tag-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #ffffff;
+}
+
+.district-call-box {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 20px;
+  padding: 1.8rem;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.district-call-box span {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.hotline-number {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ef4444;
+  margin: 6px 0 1.2rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. 4-STEP WORKFLOW SECTION
+   -------------------------------------------------------------------------- */
+.workflow-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.8rem;
+}
+
+.wf-card-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.wf-card-item:hover {
+  transform: translateY(-6px);
+  border-color: #043c23;
+  box-shadow: 0 15px 30px rgba(4, 60, 35, 0.12);
+}
+
+.wf-step-num {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: rgba(4, 60, 35, 0.12);
+}
+
+.wf-icon-box {
+  width: 52px;
+  height: 52px;
+  background: rgba(4, 60, 35, 0.1);
+  color: #043c23;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.wf-card-item h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #043c23;
+  margin: 0 0 8px 0;
+}
+
+.wf-card-item p {
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7. PRICE REFERENCE SECTION
+   -------------------------------------------------------------------------- */
+.pricing-list-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.price-card-row {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.2rem 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.25s ease;
+}
+
+.price-card-row:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffd600;
+  transform: translateX(4px);
+}
+
+.price-row-left h4 {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+
+.price-row-left p {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.price-row-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.price-highlight-val {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ffd600;
+}
+
+.warranty-badge {
+  background: rgba(255, 214, 0, 0.2);
+  color: #ffd600;
+  border: 1px solid rgba(255, 214, 0, 0.35);
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   8. BOOKING FORM SECTION
+   -------------------------------------------------------------------------- */
+.booking-split-card {
+  background: #043c23;
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 992px) {
+  .booking-split-card {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
+
+.booking-card-left {
+  padding: 3rem 2.5rem;
+  background: linear-gradient(135deg, #022314 0%, #043c23 100%);
+}
+
+.booking-card-left h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin: 10px 0 12px 0;
+}
+
+.booking-card-left p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.hotline-banner-dark {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 214, 0, 0.3);
+  padding: 1.2rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 1.8rem;
+}
+
+.banner-phone-icon {
+  color: #ffd600;
+}
+
+.hotline-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+}
+
+.hotline-val {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffd600;
+  margin: 0;
+}
+
+.address-info-list p {
+  font-size: 0.88rem;
+  color: #e2e8f0;
+  margin-bottom: 8px;
+}
+
+.booking-card-right {
+  background: #ffffff;
+  padding: 2.5rem;
+}
+
+.booking-real-form .form-group-item {
+  margin-bottom: 1.2rem;
+}
+
+.booking-real-form label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.booking-real-form input,
+.booking-real-form select,
+.booking-real-form textarea {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  transition: all 0.25s ease;
+}
+
+.booking-real-form input:focus,
+.booking-real-form select:focus,
+.booking-real-form textarea:focus {
+  outline: none;
+  border-color: #043c23;
+  box-shadow: 0 0 12px rgba(4, 60, 35, 0.15);
+}
+
+.form-row-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   9. STICKY EMERGENCY BAR
+   -------------------------------------------------------------------------- */
+.svc-sticky-phone-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(4, 60, 35, 0.95);
+  border-top: 1px solid rgba(239, 68, 68, 0.4);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+}
+
+.sticky-bar-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.btn-sticky-red {
+  background: #ef4444;
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.btn-sticky-red:hover {
+  transform: scale(1.04);
+}
+
+@media (max-width: 640px) {
+  .sticky-bar-text { display: none; }
+  .svc-sticky-phone-bar { justify-content: center; }
+  .btn-sticky-red { width: 100%; justify-content: center; }
+}

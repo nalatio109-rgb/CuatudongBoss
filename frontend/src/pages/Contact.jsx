@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MapPin, Mail, Clock, Send, CheckCircle2, MessageSquare } from 'lucide-react';
+import RevealOnScroll from '../components/RevealOnScroll';
 import './Contact.css';
 
 const Contact = () => {
@@ -58,9 +59,11 @@ const Contact = () => {
       {/* 1. HERO BANNER */}
       <section className="contact-hero">
         <div className="container text-center">
-          <span className="contact-badge">THÔNG TIN LIÊN HỆ</span>
-          <h1>LIÊN HỆ VỚI <span className="text-gold">BOSS</span></h1>
-          <p>Hãy liên hệ với chúng tôi để được tư vấn giải pháp Cửa Cuốn, Cửa Tự Động & Nhôm Kính Cao Cấp chuẩn Châu Âu hoàn toàn miễn phí.</p>
+          <RevealOnScroll animation="fade-down">
+            <span className="contact-badge">THÔNG TIN LIÊN HỆ</span>
+            <h1>LIÊN HỆ VỚI <span className="text-gold">BOSS</span></h1>
+            <p>Hãy liên hệ với chúng tôi để được tư vấn giải pháp Cửa Cuốn, Cửa Tự Động & Nhôm Kính Cao Cấp chuẩn Châu Âu hoàn toàn miễn phí.</p>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -68,41 +71,47 @@ const Contact = () => {
       <section className="contact-info-section">
         <div className="container">
           <div className="contact-cards-grid">
-            <div className="contact-info-card highlight-card">
-              <div className="info-icon-box gold">
-                <Phone size={28} />
+            <RevealOnScroll animation="fade-up" delay={0}>
+              <div className="contact-info-card highlight-card">
+                <div className="info-icon-box gold">
+                  <Phone size={28} />
+                </div>
+                <h3>HOTLINE / ZALO</h3>
+                <p className="info-highlight">0904.678.323</p>
+                <p className="info-sub">Hỗ trợ tư vấn & báo giá nhanh 24/7</p>
+                <a href="tel:0904678323" className="btn-contact-action gold-btn">
+                  <Phone size={16} /> Gọi ngay 0904.678.323
+                </a>
               </div>
-              <h3>HOTLINE / ZALO</h3>
-              <p className="info-highlight">0904.678.323</p>
-              <p className="info-sub">Hỗ trợ tư vấn & báo giá nhanh 24/7</p>
-              <a href="tel:0904678323" className="btn-contact-action gold-btn">
-                <Phone size={16} /> Gọi ngay 0904.678.323
-              </a>
-            </div>
+            </RevealOnScroll>
 
-            <div className="contact-info-card">
-              <div className="info-icon-box green">
-                <MapPin size={28} />
+            <RevealOnScroll animation="fade-up" delay={150}>
+              <div className="contact-info-card">
+                <div className="info-icon-box green">
+                  <MapPin size={28} />
+                </div>
+                <h3>TRỤ SỞ CHÍNH</h3>
+                <p className="info-text">647 Ngô Quyền, Sơn Trà, Đà Nẵng</p>
+                <p className="info-sub">Địa chỉ văn phòng làm việc & tiếp nhận dự án</p>
+                <a href="https://maps.google.com/?q=647+Ngô+Quyền+Sơn+Trà+Đà+Nẵng" target="_blank" rel="noreferrer" className="btn-contact-action outline-btn">
+                  Xem bản đồ Google Maps
+                </a>
               </div>
-              <h3>TRỤ SỞ CHÍNH</h3>
-              <p className="info-text">647 Ngô Quyền, Sơn Trà, Đà Nẵng</p>
-              <p className="info-sub">Địa chỉ văn phòng làm việc & tiếp nhận dự án</p>
-              <a href="https://maps.google.com/?q=647+Ngô+Quyền+Sơn+Trà+Đà+Nẵng" target="_blank" rel="noreferrer" className="btn-contact-action outline-btn">
-                Xem bản đồ Google Maps
-              </a>
-            </div>
+            </RevealOnScroll>
 
-            <div className="contact-info-card">
-              <div className="info-icon-box green">
-                <MapPin size={28} />
+            <RevealOnScroll animation="fade-up" delay={300}>
+              <div className="contact-info-card">
+                <div className="info-icon-box green">
+                  <MapPin size={28} />
+                </div>
+                <h3>SHOWROOM TRƯNG BÀY</h3>
+                <p className="info-text">267 Tô Hiệu, Hòa Khánh, Đà Nẵng</p>
+                <p className="info-sub">Địa điểm trưng bày trải nghiệm mẫu cửa thực tế</p>
+                <a href="https://maps.google.com/?q=267+Tô+Hiệu+Hòa+Khánh+Đà+Nẵng" target="_blank" rel="noreferrer" className="btn-contact-action outline-btn">
+                  Xem bản đồ Google Maps
+                </a>
               </div>
-              <h3>SHOWROOM TRƯNG BÀY</h3>
-              <p className="info-text">267 Tô Hiệu, Hòa Khánh, Đà Nẵng</p>
-              <p className="info-sub">Địa điểm trưng bày trải nghiệm mẫu cửa thực tế</p>
-              <a href="https://maps.google.com/?q=267+Tô+Hiệu+Hòa+Khánh+Đà+Nẵng" target="_blank" rel="noreferrer" className="btn-contact-action outline-btn">
-                Xem bản đồ Google Maps
-              </a>
-            </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -110,7 +119,7 @@ const Contact = () => {
       {/* 3. CONTACT FORM & MAP SECTION */}
       <section className="contact-form-section">
         <div className="container contact-grid-2col">
-          <div className="contact-form-box">
+          <RevealOnScroll animation="fade-right" className="contact-form-box">
             <h2>GỬI YÊU CẦU BÁO GIÁ</h2>
             <p>Để lại thông tin, đội ngũ kỹ sư của BOSS sẽ liên hệ tư vấn và gửi báo giá chi tiết cho bạn.</p>
 
@@ -173,9 +182,9 @@ const Contact = () => {
                 </button>
               </form>
             )}
-          </div>
+          </RevealOnScroll>
 
-          <div className="contact-map-box">
+          <RevealOnScroll animation="fade-left" className="contact-map-box">
             <h2>BẢN ĐỒ VỊ TRÍ</h2>
             <div className="map-wrapper">
               <iframe 
@@ -189,7 +198,7 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade">
               </iframe>
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
       </section>
     </div>

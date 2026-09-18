@@ -7,6 +7,38 @@ import {
 } from "lucide-react";
 import "./Admin.css";
 
+const SUBCATEGORIES = {
+  cuacuon: [
+    "Cửa cuốn khe thoáng Đức",
+    "Cửa cuốn Đài Loan",
+    "Cửa cuốn tấm liền Úc",
+    "Cửa cuốn song ngang - mắc võng",
+    "Cửa cuốn cao cấp"
+  ],
+  phukien: [
+    "Mô tơ cửa cuốn",
+    "Bình lưu điện cửa cuốn",
+    "Bộ điều khiển qua điện thoại",
+    "Tay điều khiển, hộp điều khiển"
+  ],
+  cuakeo: [
+    "Cửa kéo CN Đức",
+    "Cửa kéo Đài Loan",
+    "Cửa kéo không lá",
+    "Cửa kéo Inox"
+  ],
+  cuatudong: [
+    "Cổng tự động",
+    "Cửa tự động",
+    "Mái hiên, rèm che tự động",
+    "Cửa kính lề sàn"
+  ],
+  nhomkinh: [
+    "Cửa nhôm Xingfa",
+    "Cửa kính cường lực"
+  ]
+};
+
 export default function Admin() {
   const [activeTab, setActiveTab] = useState("contacts");
   
@@ -39,6 +71,7 @@ export default function Admin() {
     title: "",
     code: "",
     category: "cuacuon",
+    subCategory: "Cửa cuốn khe thoáng Đức",
     image: "https://images.unsplash.com/photo-1558008258-3256797b43f3?auto=format&fit=crop&w=800&q=80",
     description: "",
     specs: "Hợp kim nhôm 6063-T5, Bảo hành 5 năm",
@@ -164,6 +197,7 @@ export default function Admin() {
       title: product.title || "",
       code: product.code || "",
       category: product.category || "cuacuon",
+      subCategory: product.subCategory || "Cửa cuốn khe thoáng Đức",
       image: product.image || "",
       description: product.description || "",
       specs: Array.isArray(product.specs) ? product.specs.join(", ") : (product.specs || ""),
@@ -872,7 +906,7 @@ export default function Admin() {
                 />
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
                 <div className="admin-form-group">
                   <label>Mã sản phẩm *</label>
                   <input 
@@ -887,13 +921,31 @@ export default function Admin() {
                   <label>Danh mục *</label>
                   <select 
                     value={productForm.category} 
-                    onChange={(e) => setProductForm({ ...productForm, category: e.target.value })}
+                    onChange={(e) => {
+                      const newCat = e.target.value;
+                      setProductForm({ 
+                        ...productForm, 
+                        category: newCat,
+                        subCategory: SUBCATEGORIES[newCat]?.[0] || ""
+                      });
+                    }}
                   >
                     <option value="cuacuon">Cửa Cuốn</option>
                     <option value="phukien">Phụ Kiện Cửa Cuốn</option>
                     <option value="cuakeo">Cửa Kéo</option>
                     <option value="cuatudong">Cổng & Cửa Tự Động</option>
                     <option value="nhomkinh">Nhôm Kính</option>
+                  </select>
+                </div>
+                <div className="admin-form-group">
+                  <label>Loại sản phẩm *</label>
+                  <select 
+                    value={productForm.subCategory} 
+                    onChange={(e) => setProductForm({ ...productForm, subCategory: e.target.value })}
+                  >
+                    {SUBCATEGORIES[productForm.category]?.map(sub => (
+                      <option key={sub} value={sub}>{sub}</option>
+                    ))}
                   </select>
                 </div>
               </div>

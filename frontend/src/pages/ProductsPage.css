@@ -220,8 +220,11 @@
   transform-style: preserve-3d;
   will-change: transform, box-shadow, opacity;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
-  animation: productCardFadeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--card-index, 0) * 0.12s);
+  opacity: 0;
+}
+
+.product-page-card.is-visible {
+  animation: productCardFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .product-page-card:hover {
@@ -389,6 +392,13 @@
 
 .product-page-card:hover .card-header-icon h3 {
   color: #00734c;
+}
+
+.product-price {
+  color: #e30613;
+  font-weight: 850;
+  font-size: 15px;
+  margin-bottom: 8px;
 }
 
 .card-desc {

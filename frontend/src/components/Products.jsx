@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ArrowRight, Home, AlignJustify, ArrowRightLeft, Columns, ShieldCheck, CheckCircle2, Star, HeadphonesIcon, X, Check, Eye } from "lucide-react";
 
+import { useNavigate } from "react-router-dom";
+
 export default function Products() {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("all");
-  const [selectedProduct, setSelectedProduct] = useState(null);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -165,7 +167,10 @@ export default function Products() {
                 style={{ "--card-index": index }}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                onClick={() => setSelectedProduct(product)}
+                onClick={() => {
+                  const { icon, ...serializableProduct } = product;
+                  navigate(`/san-pham/${product.id}`, { state: { product: serializableProduct } });
+                }}
               >
                 <div className="new-product-content">
                   <div className="product-icon-badge">{product.icon}</div>
@@ -175,7 +180,8 @@ export default function Products() {
                   <p className="product-desc">{product.description}</p>
                   <button className="btn-explore" onClick={(e) => {
                     e.stopPropagation();
-                    setSelectedProduct(product);
+                    const { icon, ...serializableProduct } = product;
+                    navigate(`/san-pham/${product.id}`, { state: { product: serializableProduct } });
                   }}>
                     KHÁM PHÁ NGAY <ArrowRight size={14} />
                   </button>
@@ -225,51 +231,6 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Product Detail Modal */}
-      {selectedProduct && createPortal(
-        <div className="product-modal-backdrop" onClick={() => setSelectedProduct(null)}>
-          <div className="product-modal-card" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setSelectedProduct(null)}>
-              <X size={20} />
-            </button>
-            <div className="modal-body">
-              <div className="modal-img-col">
-                <img src={selectedProduct.image} alt={selectedProduct.title.replace(/\n/g, ' ')} />
-                {selectedProduct.isNew && <span className="modal-badge-new">SẢN PHẨM MỚI</span>}
-              </div>
-              <div className="modal-info-col">
-                <div className="modal-icon-header">
-                  <div className="modal-icon">{selectedProduct.icon}</div>
-                  <h2>{selectedProduct.title.replace(/\n/g, ' ')}</h2>
-                </div>
-                <p className="modal-desc">{selectedProduct.details}</p>
-
-                <div className="modal-specs">
-                  <h4>ĐẶC ĐIỂM NỔI BẬT:</h4>
-                  <ul>
-                    {selectedProduct.specs.map((spec, i) => (
-                      <li key={i}>
-                        <Check size={16} className="check-icon" />
-                        <span>{spec}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="modal-actions">
-                  <a href="#lien-he" className="modal-btn-quote" onClick={() => setSelectedProduct(null)}>
-                    NHẬN BÁO GIÁ NGAY <ArrowRight size={16} />
-                  </a>
-                  <button className="modal-btn-close" onClick={() => setSelectedProduct(null)}>
-                    ĐÓNG
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
     </>
   );
 }

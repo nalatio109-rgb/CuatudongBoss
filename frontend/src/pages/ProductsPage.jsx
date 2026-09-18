@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { 
   ArrowRight, Search, ShieldCheck, CheckCircle2, Star, HeadphonesIcon, 
   Home, AlignJustify, ArrowRightLeft, Columns, Eye, X, Check, Filter, Sparkles, PhoneCall
@@ -8,13 +8,13 @@ import {
 import "./ProductsPage.css";
 
 export default function ProductsPage() {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const catFromUrl = searchParams.get("cat");
   const searchFromUrl = searchParams.get("search");
 
   const [activeCategory, setActiveCategory] = useState(catFromUrl || "all");
   const [searchQuery, setSearchQuery] = useState(searchFromUrl || "");
-  const [selectedProduct, setSelectedProduct] = useState(null);
   const [dbProducts, setDbProducts] = useState([]);
 
   useEffect(() => {
@@ -288,6 +288,26 @@ export default function ProductsPage() {
     return matchesCategory && matchesSearch;
   });
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Optional: Add a slight delay based on the index of the intersected batch
+          // so if multiple items enter at once, they stagger slightly
+          setTimeout(() => {
+            entry.target.classList.add('is-visible');
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+    const elements = document.querySelectorAll('.product-page-card');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [filteredProducts]);
+
   // 3D Parallax Tilt Handler
   const handleCardMouseMove = (e) => {
     const card = e.currentTarget;
@@ -372,7 +392,10 @@ export default function ProductsPage() {
                   style={{ "--card-index": index }}
                   onMouseMove={handleCardMouseMove}
                   onMouseLeave={handleCardMouseLeave}
-                  onClick={() => setSelectedProduct(product)}
+                  onClick={() => {
+                    const { icon, ...serializableProduct } = product;
+                    navigate(`/san-pham/${product.id}`, { state: { product: serializableProduct } });
+                  }}
                 >
                   <div className="card-image-wrap">
                     <img src={product.image} alt={product.title} />
@@ -388,6 +411,7 @@ export default function ProductsPage() {
                       <div className="icon-box">{product.icon}</div>
                       <h3>{product.title}</h3>
                     </div>
+                    {product.price && <div className="product-price">{product.price}</div>}
                     <p className="card-desc">{product.description}</p>
                     
                     <div className="card-specs-mini">
@@ -401,7 +425,8 @@ export default function ProductsPage() {
                     <div className="card-footer-actions">
                       <button className="btn-detail-view" onClick={(e) => {
                         e.stopPropagation();
-                        setSelectedProduct(product);
+                        const { icon, ...serializableProduct } = product;
+                        navigate(`/san-pham/${product.id}`, { state: { product: serializableProduct } });
                       }}>
                         XEM CHI TIẾT <ArrowRight size={14} />
                       </button>
@@ -464,58 +489,6 @@ export default function ProductsPage() {
       </section>
 
 
-      {/* 5. PRODUCT DETAIL MODAL */}
-      {selectedProduct && createPortal(
-        <div className="products-page-modal-backdrop" onClick={() => setSelectedProduct(null)}>
-          <div className="products-page-modal-card" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setSelectedProduct(null)}>
-              <X size={20} />
-            </button>
-
-            <div className="modal-content-grid">
-              <div className="modal-left-img">
-                <img src={selectedProduct.image} alt={selectedProduct.title} />
-                <span className="modal-badge-float">{selectedProduct.badge}</span>
-                <span className="modal-code-float">MÃ SP: {selectedProduct.code}</span>
-              </div>
-
-              <div className="modal-right-info">
-                <div className="modal-title-row">
-                  <div className="modal-icon-badge">{selectedProduct.icon}</div>
-                  <div>
-                    <h2>{selectedProduct.title}</h2>
-                    <span className="modal-subcode">Mã hiệu: {selectedProduct.code}</span>
-                  </div>
-                </div>
-
-                <p className="modal-full-desc">{selectedProduct.details}</p>
-
-                <div className="modal-specs-box">
-                  <h4>THÔNG SỐ & ĐẶC ĐIỂM NỔI BẬT:</h4>
-                  <ul>
-                    {selectedProduct.specs.map((spec, i) => (
-                      <li key={i}>
-                        <Check size={16} className="check-icon" />
-                        <span>{spec}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="modal-actions-row">
-                  <a href="tel:0904678323" className="btn-modal-call">
-                    <PhoneCall size={18} /> LIÊN HỆ BÁO GIÁ
-                  </a>
-                  <button className="btn-modal-close" onClick={() => setSelectedProduct(null)}>
-                    ĐÓNG
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
     </div>
   );
 }

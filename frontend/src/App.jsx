@@ -48,6 +48,7 @@ function HomePage() {
 }
 
 import ProductsPage from "./pages/ProductsPage";
+import ProductDetail from "./pages/ProductDetail";
 
 import Admin from "./pages/Admin";
 
@@ -63,6 +64,7 @@ function AppContent() {
         <Route path="/" element={<HomePage />} />
         <Route path="/gioi-thieu" element={<About />} />
         <Route path="/san-pham" element={<ProductsPage />} />
+        <Route path="/san-pham/:id" element={<ProductDetail />} />
         <Route path="/dich-vu" element={<Services />} />
         <Route path="/du-an" element={<ProjectsPage />} />
         <Route path="/bao-gia" element={<Pricing />} />
